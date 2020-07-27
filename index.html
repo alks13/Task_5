@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+
+	console.log('сумма чисел : ')
+	function sum(a){
+		return function(b){
+			return a + b;
+		}
+	}
+	console.log(sum(5)(6));
+
+
+	console.log('элементы массива между : ');
+	let arr = [1,2,3,4,5,6,7,8,9,10];	
+	function inBetween(a,b){
+		return function (res){
+			return res >= a && res <=b;
+		}
+	}
+	console.log(arr.filter(inBetween(2,8)));
+
+
+		console.log(' совпадающие элементы массива  : ');
+	function inArray(arr){
+		return function (result){
+			return arr.includes(result); 
+		}
+	}
+	console.log(arr.filter(inArray([5,6,8])));
+
+		
+
+	let users = [
+	  { name: "John", age: 20, surname: "Johnson" },
+	  { name: "Pete", age: 18, surname: "Peterson" },
+	  { name: "Ann", age: 19, surname: "Hathaway" }
+	];
+		console.log(' сортировка по возрасту : ')
+		
+		function byField(value){
+			return (a,b) => a[value] < b[value] ? -1 : 1;
+		}
+		users.sort(byField('age'));
+		users.forEach(user => console.log(user.name,user.age));
+	
+		console.log('сортировка по имени : ');
+
+		users.sort(byField('name'));
+		users.forEach(user => console.log(user.name,user.age));
+			
+
+			console.log('вывод элементов');
+			function makeArmy() {
+	 		 let shooters = [];
+
+	  		for(let i = 0; i < 10 ; i++) {
+	   		 let shooter = function() { 
+	   		   console.log(i);
+	    		};
+	    		shooters.push(shooter);
+	   
+	  		}
+
+	 		 return shooters;
+			}
+
+			let army = makeArmy();
+
+			army[0](); 
+			army[5](); 
+
+
+</script>
+</body>
+</html>
