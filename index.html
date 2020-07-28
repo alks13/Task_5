@@ -73,6 +73,53 @@
 
 			army[0](); 
 			army[5](); 
+	
+	function makeBuffer() {
+			let text = '';
+			return function(value){
+				if(arguments.length == 0){
+					return text;
+				}
+			
+				text += value;
+
+		}
+	}
+	
+	
+
+	let buffer = makeBuffer();
+	buffer(' Привет ');
+	buffer('как дела ');
+	buffer(' ? ')
+	alert(buffer());
+
+
+	function Makecounter (){
+		var InitialValue = 1;
+		function counter(){
+			return InitialValue++;
+		}
+		counter.set = function(value){
+			InitialValue = value;
+		};
+		counter.reset =function(){
+			InitialValue = 0;
+		};
+		counter.next = function (){
+			return InitialValue++;
+		};
+		return counter
+	}
+	 let counter = Makecounter();
+	
+	
+	 console.log(counter());//1
+	 counter.reset(); //0
+	 counter.set(5); 
+	 console.log(counter()); //5
+	 counter.next();
+	 console.log(counter()); //6
 
 
 </script>
